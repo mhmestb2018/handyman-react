@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+
+import About from './pages/About'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
+import Error from './pages/Error'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Products from './pages/Products'
+import ProductDetails from './pages/ProductDetails'
+import Header from './components/Header/Header'
+
+export default function App() {
+	return (
+		<Router>
+			<Header />
+			<Switch>
+				<Route exact path='/'>
+					<Home />
+				</Route>
+				<Route path='/about'>
+					<About />
+				</Route>
+				<Route path='/cart'>
+					<Cart />
+				</Route>
+				<Route path='/checkout'>
+					<Checkout />
+				</Route>
+				<Route path='/login'>
+					<Login />
+				</Route>
+				<Route exact path='/products'>
+					<Products />
+				</Route>
+				<Route path='/products/:id' children={<ProductDetails />}></Route>
+				<Route path='*'>
+					<Error />
+				</Route>
+			</Switch>
+		</Router>
+	)
 }
-
-export default App;
