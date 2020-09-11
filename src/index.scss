@@ -82,6 +82,16 @@ img {
 	display: block;
 }
 
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.section {
+	padding: 4rem 0;
+}
+
 .loading {
 	text-transform: capitalize;
 	text-align: center;
@@ -92,4 +102,59 @@ img {
 		width: 10rem;
 		margin: 0 auto;
 	}
+}
+
+/* 
+====== 
+Buttons 
+======
+*/
+.btn,
+.btn-white,
+.btn-primary {
+	text-transform: uppercase;
+	letter-spacing: var(--mainSpacing);
+	color: var(--primaryColor);
+	border: 2px solid var(--primaryColor);
+	padding: 0.45rem 0.8rem;
+	display: inline-block;
+	transition: var(--mainTransition);
+	cursor: pointer;
+	font-size: 0.8rem;
+	background: transparent;
+}
+
+.btn:hover {
+	background: var(--primaryColor);
+	color: var(--mainWhite);
+}
+
+.btn-white {
+	background: transparent;
+	color: var(--mainWhite);
+	border-color: var(--mainWhite);
+
+	.btn-white:hover {
+		background: var(--mainWhite);
+		color: var(--primaryColor);
+	}
+}
+
+.btn-primary {
+	background: var(--primaryColor);
+	color: var(--mainWhite);
+	border-color: var(--primaryColor);
+
+	.btn-primary:hover {
+		background: transparent;
+		color: var(--primaryColor);
+	}
+}
+
+.btn-block {
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+	box-shadow: var(--lightShadow);
+	text-align: center;
 }

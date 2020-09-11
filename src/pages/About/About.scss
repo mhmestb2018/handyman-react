@@ -1,0 +1,17 @@
+@import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixin.scss';
+
+/* 
+====== 
+About
+======
+*/
+.about-section {
+	flex-direction: column;
+	width: $smallWidth;
+	max-width: $maxWidth;
+
+	.section-title {
+		@include text-center;
+	}
+}

@@ -1,0 +1,18 @@
+@mixin display-flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin text-center {
+	display: flex;
+	justify-content: center;
+}
+
+@mixin linear-gradient {
+	background: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.7) 50%,
+		rgba(255, 255, 255, 0.1)
+	);
+}
