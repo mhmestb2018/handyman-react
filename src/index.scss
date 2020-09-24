@@ -1,38 +1,13 @@
+@import './assets/scss/color.scss';
+@import './assets/scss/variables.scss';
+
 /* 
 ====== 
 Fonts
 ======
 */
 @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;400;500;700;900&display=swap');
-/* 
-====== 
-Variables 
-======
-*/
-:root {
-	/* --primaryColor: #9e3aa3; */
-	/* --primaryDarkColor: #4e1d51; */
-	--primaryColor: #f15025;
-	--primaryDarkColor: #c02c03;
-	--primaryFont: 'Catamaran', sans-serif;
-	--slantedFont: 'Kaushan Script', cursive;
-	--mainWhite: #fff;
-	--offWhite: #f7f7f7;
-	--mainBackground: #ececec;
-	--mainOverlay: rgba(35, 10, 36, 0.4);
-	--mainBlack: #222;
-	--mainGrey: #ececec;
-	--darkGrey: #afafaf;
-	--mainRed: #bd0303;
-	--mainTransition: all 0.3s linear;
-	--mainSpacing: 0.3rem;
-	--lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
-	--darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
-	--mainBorderRadius: 0.25rem;
-	--maxWidth: 40rem;
-	--smallWidth: 85vw;
-	--fullWidth: 1170px;
-}
+
 /* 
 ====== 
 Global Styles 
@@ -45,9 +20,9 @@ Global Styles
 }
 
 body {
-	font-family: var(--primaryFont);
-	color: var(--mainBlack);
-	background: var(--mainBackground);
+	font-family: $primaryFont;
+	color: $mainBlack;
+	background: $mainBackground;
 	line-height: 1.4;
 	font-size: 1rem;
 	font-weight: 300;
@@ -59,9 +34,9 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--primaryFont);
+	font-family: $primaryFont;
 	margin-bottom: 1.25rem;
-	letter-spacing: var(--mainSpacing);
+	letter-spacing: $mainSpacing;
 }
 
 p {
@@ -92,6 +67,15 @@ main {
 	padding: 4rem 0;
 }
 
+.section-title {
+	font-size: 2rem;
+	text-transform: capitalize;
+	letter-spacing: 0.3rem;
+	letter-spacing: var(--mainSpacing);
+	text-align: center;
+	margin-bottom: 3.5rem;
+}
+
 .loading {
 	text-transform: capitalize;
 	text-align: center;
@@ -113,41 +97,42 @@ Buttons
 .btn-white,
 .btn-primary {
 	text-transform: uppercase;
-	letter-spacing: var(--mainSpacing);
-	color: var(--primaryColor);
-	border: 2px solid var(--primaryColor);
+	letter-spacing: $mainSpacing;
+	color: $mainWhite;
+	border: 2px solid $primaryColor;
 	padding: 0.45rem 0.8rem;
 	display: inline-block;
-	transition: var(--mainTransition);
+	transition: $mainTransition;
 	cursor: pointer;
 	font-size: 0.8rem;
-	background: transparent;
+	background: $primaryDarkColor;
+	width: 100%;
 }
 
 .btn:hover {
-	background: var(--primaryColor);
-	color: var(--mainWhite);
+	background: $primaryColor;
+	color: $mainWhite;
 }
 
 .btn-white {
 	background: transparent;
-	color: var(--mainWhite);
-	border-color: var(--mainWhite);
+	color: $mainWhite;
+	border-color: $mainWhite;
 
 	.btn-white:hover {
-		background: var(--mainWhite);
-		color: var(--primaryColor);
+		background: $mainWhite;
+		color: $primaryColor;
 	}
 }
 
 .btn-primary {
-	background: var(--primaryColor);
-	color: var(--mainWhite);
-	border-color: var(--primaryColor);
+	background: $primaryColor;
+	color: $mainWhite;
+	border-color: $primaryColor;
 
 	.btn-primary:hover {
 		background: transparent;
-		color: var(--primaryColor);
+		color: $primaryColor;
 	}
 }
 
@@ -155,6 +140,6 @@ Buttons
 	width: 100%;
 	display: block;
 	margin: 0 auto;
-	box-shadow: var(--lightShadow);
+	box-shadow: $lightShadow;
 	text-align: center;
 }
