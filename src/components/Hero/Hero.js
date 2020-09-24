@@ -1,20 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import Button from '../UI/Button/Button'
+import SearchInput from '../UI/SearchInput/SearchInput'
 
 import './Hero.scss'
 
 export default function Hero({ children }) {
+	const [inputValue, setInputValue] = useState('')
+
+	const handleChange = (event) => {
+		setInputValue(event.target.value)
+	}
+
+	const handleSubmit = (event) => {
+		event.preventDefault()
+	}
+
 	return (
-		<div className='hero'>
+		<section className='hero'>
 			<div className='banner'>
-				<h1>He gets thing done</h1>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
-					suscipit minima sapiente aliquam pariatur nulla obcaecati libero illum
-					laudantium distinctio earum quos ad debitis vero fuga corrupti unde
-					numquam eligendi?
-				</p>
-				{children}
+				<h1>Find top-rated, pros for your project in your area</h1>
+				<form onSubmit={handleSubmit}>
+					<div className='search-input-wrap'>
+						<SearchInput
+							type='text'
+							name='search'
+							id='search'
+							className='search-input'
+							placeholder='E.g. Burlington'
+							// value={search}
+							onChange={handleChange}
+						/>
+						<Button className='search-button' type='submit'>
+							Find Pros
+						</Button>
+					</div>
+				</form>
 			</div>
-		</div>
+		</section>
 	)
 }

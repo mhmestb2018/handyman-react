@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react'
 
 export default function Cart() {
-  return <h1>hello from cart page</h1>;
+	return <h1>hello from cart page</h1>
 }
