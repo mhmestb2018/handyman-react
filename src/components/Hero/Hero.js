@@ -28,7 +28,7 @@ export default function Hero({ children }) {
 							id='search'
 							className='search-input'
 							placeholder='E.g. Burlington'
-							// value={search}
+							value={inputValue}
 							onChange={handleChange}
 						/>
 						<Button className='search-button' type='submit'>
