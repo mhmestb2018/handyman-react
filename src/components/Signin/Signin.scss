@@ -1,5 +1,15 @@
-.social-signin {
-	margin-top: 0.5rem;
+@import '../../assets/scss/color.scss';
+@import '../../assets/scss/variables.scss';
+
+.form-section {
+	background-color: $offWhite;
+	box-shadow: $lightShadow;
+	border-radius: $mainBorderRadius;
+	padding: 35px;
+
+	.social-signin {
+		margin-top: 0.5rem;
+	}
 }
 
 .btn-login {

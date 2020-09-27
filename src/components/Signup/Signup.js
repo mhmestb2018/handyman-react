@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 
-import Button from '../Form/Button'
-import FormInput from '../Form/FormInput'
-import AuthWrapper from '../AuthWrapper'
-
-import { signUpUserStart } from '../../redux/User/user.action'
+import Button from '../UI/Button/Button'
+import FormInput from '../UI/FormInput/FormInput'
 
 import './Signup.scss'
 
@@ -35,7 +32,7 @@ const Signup = () => {
 	}
 
 	return (
-		<AuthWrapper {...configAuthWrapper}>
+		<section className='section form-section'>
 			{errors.length > 0 && (
 				<ul>
 					{errors.map((err, index) => {
@@ -85,7 +82,7 @@ const Signup = () => {
 					Registration
 				</Button>
 			</form>
-		</AuthWrapper>
+		</section>
 	)
 }
 

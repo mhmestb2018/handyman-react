@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { signInWithGoogle } from '../../firebase/utils'
 // import { useDispatch, useSelector } from 'react-redux'
 
 import Button from '../UI/Button/Button'
@@ -12,7 +13,7 @@ const Signin = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault()
 	}
 
@@ -21,7 +22,7 @@ const Signin = () => {
 	}
 
 	return (
-		<div className='formwrap'>
+		<section className='section form-section'>
 			<form onSubmit={handleSubmit}>
 				<FormInput
 					type='email'
@@ -45,7 +46,9 @@ const Signin = () => {
 
 				<div className='social-signin'>
 					<div className='row'>
-						<Button className='btn btn-login'>Sign in with Google</Button>
+						<Button className='btn btn-login' onClick={signInWithGoogle}>
+							Sign in with Google
+						</Button>
 					</div>
 				</div>
 
@@ -53,7 +56,7 @@ const Signin = () => {
 					<Link to='/recovery'>Reset Password</Link>
 				</div>
 			</form>
-		</div>
+		</section>
 	)
 }
 

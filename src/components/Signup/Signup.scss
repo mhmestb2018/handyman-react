@@ -1,3 +1,13 @@
+@import '../../assets/scss/color.scss';
+@import '../../assets/scss/variables.scss';
+
+.form-section {
+	background-color: $offWhite;
+	box-shadow: $lightShadow;
+	border-radius: $mainBorderRadius;
+	padding: 35px;
+}
+
 .btn-login {
 	border-radius: 9px;
 }

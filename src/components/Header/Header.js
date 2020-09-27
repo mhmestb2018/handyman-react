@@ -1,36 +1,60 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom'
+import { auth } from '../../firebase/utils'
 
 import './Header.scss'
 
-export default function Header() {
+const Header = ({ currentUser }) => {
+	console.log(currentUser)
 	return (
 		<header className='header'>
-			<img src='' alt='logo' className='logo' />
-			<nav>
+			<nav className='nav-left'>
 				<ul>
-					<div>
+					<li>
+						<img src='' alt='logo' className='logo' />
+					</li>
+					<li>
+						<Link to='/'>Home</Link>
+					</li>
+					<li>
+						<Link to='/about'>About</Link>
+					</li>
+					<li>
+						<Link to='/products'>Products</Link>
+					</li>
+				</ul>
+			</nav>
+
+			<nav className='nav-right'>
+				{currentUser && currentUser ? (
+					<ul>
 						<li>
-							<Link to='/'>Home</Link>
+							<Link to='/dashboard'>My Account</Link>
 						</li>
 						<li>
-							<Link to='/about'>About</Link>
+							<span className='log-out' onClick={() => auth.signOut()}>
+								Logout
+							</span>
 						</li>
-						<li>
-							<Link to='/products'>Products</Link>
-						</li>
-					</div>
-					<div>
+					</ul>
+				) : (
+					<ul>
 						<li>
 							<Link to='/login'>Login</Link>
 						</li>
 						<li>
-							<Link to='/cart'>Cart</Link>
+							<Link to='/registration'>Registration</Link>
 						</li>
-					</div>
-				</ul>
+					</ul>
+				)}
 			</nav>
 		</header>
 	)
 }
+
+Header.defaultProps = {
+	currentUser: null,
+}
+
+export default Header

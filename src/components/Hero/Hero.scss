@@ -8,16 +8,14 @@ Hero
 ======
 */
 .hero {
-	background-image: url('../../assets/images/kitchen.jpg');
+	background-image: url('../../assets/images/Image.png');
 	background-color: $mainBackground;
 	background-position: center; /* Center the image */
 	background-repeat: no-repeat; /* Do not repeat the image */
 	background-size: cover;
 	min-height: calc(65vh);
 	@include display-flex;
-	color: $offWhite;
 	width: 100%;
-	filter: brightness(80%);
 
 	.banner {
 		width: var(--smallWidth);
@@ -64,7 +62,7 @@ Hero
 	}
 
 	h1 {
-		color: $primaryDarkColor;
+		color: $mainWhite;
 		font-size: 1.5rem;
 		font-weight: 900;
 		text-transform: uppercase;
