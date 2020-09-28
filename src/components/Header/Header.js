@@ -6,7 +6,6 @@ import { auth } from '../../firebase/utils'
 import './Header.scss'
 
 const Header = ({ currentUser }) => {
-	console.log(currentUser)
 	return (
 		<header className='header'>
 			<nav className='nav-left'>
@@ -31,6 +30,9 @@ const Header = ({ currentUser }) => {
 					<ul>
 						<li>
 							<Link to='/dashboard'>My Account</Link>
+						</li>
+						<li>
+							<Link to='/cart'>Cart</Link>
 						</li>
 						<li>
 							<span className='log-out' onClick={() => auth.signOut()}>

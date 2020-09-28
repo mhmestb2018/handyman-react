@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect,
-} from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import About from './pages/About/About'
 import Cart from './pages/Cart'
@@ -18,32 +13,30 @@ import Login from './pages/Login/Login'
 import Registration from './pages/Registration/Registration'
 
 import Header from './components/Header/Header'
-import { auth } from './firebase/utils'
+import { auth, handleUserProfile } from './firebase/utils'
 
 const initialState = {
 	currentUser: null,
 }
 
-const App = (props) => {
-	const [currentUser, setCurrentUser] = useState(initialState)
+const App = () => {
+	const [currentUser, setCurrentUser] = useState('')
 
 	useEffect(() => {
-		let authListener = null
-		authListener = auth.onAuthStateChanged(async (userAuth) => {
-			if (!userAuth) {
-				setCurrentUser({ currentUser: null })
+		const authListener = auth.onAuthStateChanged(async (userAuth) => {
+			if (userAuth) {
+				const userRef = await handleUserProfile(userAuth)
+				userRef.onSnapshot((snapshot) => {
+					setCurrentUser({
+						currentUser: {
+							id: snapshot.id,
+							...snapshot.data(),
+						},
+					})
+				})
 			}
-			// const userRef = await handleUserProfile(userAuth)
-			// userRef.onSnapshot((snapshot) => {
-			// 	setCurrentUser({
-			// 		currentUser: {
-			// 			id: snapshot.id,
-			// 			...snapshot.data(),
-			// 		},
-			// 	})
-			// })
 
-			setCurrentUser({ currentUser: userAuth })
+			setCurrentUser(userAuth)
 		})
 
 		return () => {
@@ -52,13 +45,11 @@ const App = (props) => {
 	}, [])
 
 	return (
-		<Router>
+		<>
 			<Header currentUser={currentUser} />
 			<main>
 				<Switch>
-					<Route exact path='/'>
-						<Home currentUser={currentUser} />
-					</Route>
+					<Route exact path='/' render={() => <Home />} />
 					<Route path='/about'>
 						<About />
 					</Route>
@@ -68,21 +59,15 @@ const App = (props) => {
 					<Route path='/checkout'>
 						<Checkout />
 					</Route>
-					<Route path='/login'>
-						<Login currentUser={currentUser} />
-					</Route>
-					{/* <Route
+					<Route
 						path='/login'
 						render={() =>
-							currentUser ? (
-								<Redirect to='/' />
-							) : (
-								<Login currentUser={currentUser} />
-							)
-						}></Route> */}
-					<Route path='/registration'>
-						<Registration currentUser={currentUser} />
-					</Route>
+							currentUser ? <Redirect to='/' /> : <Login />
+						}></Route>
+					<Route
+						path='/registration'
+						render={() => <Registration currentUser={currentUser} />}
+					/>
 					<Route exact path='/products'>
 						<Products />
 					</Route>
@@ -92,7 +77,7 @@ const App = (props) => {
 					</Route>
 				</Switch>
 			</main>
-		</Router>
+		</>
 	)
 }
 
