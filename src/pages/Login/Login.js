@@ -6,7 +6,7 @@ import './Login.scss'
 
 export default function Login() {
 	return (
-		<section className='section'>
+		<section className='signin section'>
 			<h2 className='section-title'>Sign In</h2>
 			<Signin />
 		</section>

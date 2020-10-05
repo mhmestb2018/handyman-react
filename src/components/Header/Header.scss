@@ -3,49 +3,5 @@
 .header {
 	display: flex;
 	justify-content: space-between;
-	// flex-direction: column;
-
-	padding: 2rem 0;
-
-	.logo {
-		margin: 0 auto;
-		width: 9rem;
-	}
-
-	.nav-left {
-		// display: flex;
-		justify-content: flex-start;
-	}
-
-	.nav-right {
-		// display: flex;
-		justify-content: flex-end;
-		text-transform: uppercase;
-	}
-
-	.log-out {
-		cursor: pointer;
-	}
-
-	ul {
-		display: flex;
-		// justify-content: space-between;
-		margin: 0 auto;
-		margin-top: 2rem;
-		// width: $smallWidth;
-		max-width: $maxWidth;
-
-		div {
-			display: flex;
-			align-items: center;
-		}
-	}
-
-	a {
-		text-transform: uppercase;
-		margin: 0 0.25rem;
-		font-size: 0.85rem;
-		letter-spacing: 2px;
-		transition: $mainTransition;
-	}
+	padding: 0 0 2rem 0;
 }

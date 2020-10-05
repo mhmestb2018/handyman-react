@@ -8,8 +8,8 @@ About
 */
 .about-section {
 	flex-direction: column;
-	width: $smallWidth;
-	max-width: $maxWidth;
+	max-width: 1170px;
+	margin: 0 auto;
 
 	.section-title {
 		@include text-center;

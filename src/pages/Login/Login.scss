@@ -1,6 +1,5 @@
 @import '../../assets/scss/variables.scss';
 
-.form {
-	width: $smallWidth;
-	max-width: $maxWidth;
+.signin {
+	flex-direction: column;
 }

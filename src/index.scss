@@ -1,5 +1,6 @@
 @import './assets/scss/color.scss';
 @import './assets/scss/variables.scss';
+@import '~bootstrap/scss/bootstrap';
 
 /* 
 ====== 
@@ -65,6 +66,11 @@ main {
 
 .section {
 	margin: 4rem 0;
+	padding: 4rem 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .section-title {

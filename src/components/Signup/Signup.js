@@ -79,7 +79,7 @@ const Signup = () => {
 				/>
 
 				<Button className='btn btn-login' type='submit'>
-					Registration
+					Register
 				</Button>
 			</form>
 		</section>

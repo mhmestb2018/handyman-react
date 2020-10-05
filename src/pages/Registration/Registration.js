@@ -6,7 +6,7 @@ import './Registration.scss'
 
 const Registration = () => {
 	return (
-		<section className='section'>
+		<section className='registration section'>
 			<h2 className='section-title'>Registration</h2>
 			<Signup />
 		</section>
