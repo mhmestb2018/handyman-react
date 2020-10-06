@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { auth, handleUserProfile } from '../../firebase/utils'
 // import { useDispatch, useSelector } from 'react-redux'
 
 import Button from '../UI/Button/Button'
@@ -13,7 +14,7 @@ const Signup = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
-	const [errors, setErrors] = useState('')
+	const [errors, setErrors] = useState([])
 
 	const resetForm = () => {
 		setDisplayName('')
@@ -23,8 +24,27 @@ const Signup = () => {
 		setErrors('')
 	}
 
-	const handleFormSubmit = (event) => {
+	const handleFormSubmit = async (event) => {
 		event.preventDefault()
+
+		if (password !== confirmPassword) {
+			const err = ["Password Don't match"]
+			setErrors(err)
+			return
+		}
+
+		try {
+			const { user } = await auth.createUserWithEmailAndPassword(
+				email,
+				password
+			)
+
+			await handleUserProfile(user, { displayName })
+
+			resetForm()
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	const configAuthWrapper = {
@@ -54,7 +74,7 @@ const Signup = () => {
 				/>
 
 				<FormInput
-					type='text'
+					type='email'
 					name='email'
 					value={email}
 					placeholder='Email'

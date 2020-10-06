@@ -61,7 +61,13 @@ const App = () => {
 					}></Route>
 				<Route
 					path='/registration'
-					render={() => <Registration currentUser={currentUser} />}
+					render={() =>
+						currentUser ? (
+							<Redirect to='/' />
+						) : (
+							<Registration currentUser={currentUser} />
+						)
+					}
 				/>
 				<Route exact path='/products'>
 					<Products />

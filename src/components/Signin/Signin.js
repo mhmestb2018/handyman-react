@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { signInWithGoogle } from '../../firebase/utils'
+import { auth, signInWithGoogle } from '../../firebase/utils'
 // import { useDispatch, useSelector } from 'react-redux'
 
 import Button from '../UI/Button/Button'
@@ -13,8 +13,26 @@ const Signin = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
+	// const handleChange = async (event) => {
+	// 	const { name, value } = event.target
+	// 	// setEmail({ [name]: value })
+	// 	// setPassword({ [name]: value })
+	// }
+	const resetForm = () => {
+		setEmail('')
+		setPassword('')
+	}
+
 	const handleSubmit = async (event) => {
 		event.preventDefault()
+
+		try {
+			await auth.signInWithEmailAndPassword(email, password)
+
+			resetForm()
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	const configAuthWrapper = {
